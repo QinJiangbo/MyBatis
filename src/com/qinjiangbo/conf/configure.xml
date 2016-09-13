@@ -13,4 +13,7 @@
             </dataSource>
         </environment>
     </environments>
+    <mappers>
+        <mapper resource="com/qinjiangbo/dao/UserMapper.xml"></mapper>
+    </mappers>
 </configuration>

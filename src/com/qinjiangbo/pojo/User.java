@@ -71,4 +71,16 @@ public class User {
         this.addr = addr;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", tel='" + tel + '\'' +
+                ", addr='" + addr + '\'' +
+                '}';
+    }
 }
