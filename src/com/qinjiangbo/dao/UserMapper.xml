@@ -4,6 +4,6 @@
 <mapper namespace="com.qinjiangbo.dao.UserMapper">
     <select id="findUserById" parameterType="int"
             resultType="com.qinjiangbo.pojo.User">
-        SELECT * FROM users WHERE  id = #{id}
+        SELECT * FROM users WHERE id = #{id}
     </select>
 </mapper>
