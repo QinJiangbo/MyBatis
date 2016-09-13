@@ -15,6 +15,20 @@ public class User {
     private String tel;
     private String addr;
 
+    public User(long id, String name, String pwd, int age, String email, String tel, String addr) {
+        this.id = id;
+        this.name = name;
+        this.pwd = pwd;
+        this.age = age;
+        this.email = email;
+        this.tel = tel;
+        this.addr = addr;
+    }
+
+    public User() {
+
+    }
+
     public long getId() {
         return id;
     }
