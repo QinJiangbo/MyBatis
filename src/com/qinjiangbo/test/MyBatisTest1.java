@@ -16,6 +16,8 @@ public class MyBatisTest1 {
 
     @Test
     public void testFindUserById() {
+        // 注意这个地方,不少人会直接写configure.xml, 这样会一直取不到值,从而报空指针,
+        // 需要写全这个资源的全路径
         String config = "com/qinjiangbo/conf/configure.xml";
         InputStream inputStream = MyBatisTest1.class.getClassLoader().getResourceAsStream(config);
         SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
