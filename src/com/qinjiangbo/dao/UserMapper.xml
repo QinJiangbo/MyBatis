@@ -19,4 +19,10 @@
         DELETE FROM users WHERE id = #{id}
     </delete>
 
+    <!-- 更新用户信息 -->
+    <update id="updateUser" parameterType="com.qinjiangbo.pojo.User">
+        UPDATE users SET name = #{name}, pwd = #{pwd}, age = #{age}, email = #{email},
+        tel = #{tel}, addr = #{addr} WHERE id = #{id}
+    </update>
+
 </mapper>

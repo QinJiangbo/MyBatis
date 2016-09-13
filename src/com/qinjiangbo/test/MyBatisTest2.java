@@ -41,5 +41,12 @@ public class MyBatisTest2 {
         sqlSession.commit();
     }
 
+    @Test
+    public void testUpdateUser() {
+        User user = new User(580314, "Handsome", "123456", 23, "123abc@126.com", "13888899211", "Wuhan University");
+        String statement = "com.qinjiangbo.dao.UserMapper.updateUser";
+        sqlSession.update(statement, user);
+        sqlSession.commit();
+    }
 
 }
