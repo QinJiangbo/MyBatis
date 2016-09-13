@@ -16,7 +16,7 @@ public class MyBatisTest1 {
 
     @Test
     public void testFindUserById() {
-        String config = "configure.xml";
+        String config = "com/qinjiangbo/conf/configure.xml";
         InputStream inputStream = MyBatisTest1.class.getClassLoader().getResourceAsStream(config);
         SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = factory.openSession();
