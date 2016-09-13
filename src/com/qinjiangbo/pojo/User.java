@@ -7,7 +7,7 @@ package com.qinjiangbo.pojo;
 public class User {
 
     // 实体类的属性名称和数据库中的字段名称要一一对应起来
-    private long id;
+    private int id;
     private String name;
     private String pwd;
     private int age;
@@ -15,7 +15,7 @@ public class User {
     private String tel;
     private String addr;
 
-    public User(long id, String name, String pwd, int age, String email, String tel, String addr) {
+    public User(int id, String name, String pwd, int age, String email, String tel, String addr) {
         this.id = id;
         this.name = name;
         this.pwd = pwd;
@@ -29,11 +29,11 @@ public class User {
 
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

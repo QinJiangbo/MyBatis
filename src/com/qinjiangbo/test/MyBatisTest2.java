@@ -33,4 +33,13 @@ public class MyBatisTest2 {
         sqlSession.insert(statement, user);
         sqlSession.commit();
     }
+
+    @Test
+    public void testDeleteUser() {
+        String statement = "com.qinjiangbo.dao.UserMapper.deleteUser";
+        sqlSession.delete(statement, 580327);
+        sqlSession.commit();
+    }
+
+
 }

@@ -14,5 +14,9 @@
         VALUES (#{id}, #{name}, #{pwd}, #{age}, #{email}, #{tel}, #{addr})
     </insert>
 
+    <!-- 删除用户信息 -->
+    <delete id="deleteUser" parameterType="int">
+        DELETE FROM users WHERE id = #{id}
+    </delete>
 
 </mapper>
