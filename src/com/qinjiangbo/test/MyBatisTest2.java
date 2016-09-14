@@ -26,6 +26,7 @@ public class MyBatisTest2 {
         sqlSession = sqlSessionFactory.openSession();
     }
 
+    // C
     @Test
     public void testCreateUser() {
         // 这里需要指明是Mapper中的哪个方法
@@ -34,17 +35,27 @@ public class MyBatisTest2 {
         sqlSession.insert(statement, user);
     }
 
+    // D
     @Test
     public void testDeleteUser() {
         String statement = "com.qinjiangbo.dao.UserMapper.deleteUser";
         sqlSession.delete(statement, 580327);
     }
 
+    // U
     @Test
     public void testUpdateUser() {
         User user = new User(580314, "QinJiangbo", "123456", 23, "123abc@126.com", "13888899211", "Wuhan University");
         String statement = "com.qinjiangbo.dao.UserMapper.updateUser";
         sqlSession.update(statement, user);
+    }
+
+    // R
+    @Test
+    public void testRetrieveUser() {
+        String statement = "com.qinjiangbo.dao.UserMapper.findUserById";
+        User user = sqlSession.selectOne(statement, 580314);
+        System.out.println(user);
     }
 
     @After
