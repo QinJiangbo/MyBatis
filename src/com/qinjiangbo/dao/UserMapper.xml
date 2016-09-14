@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 当同时使用XML和注解的时候, 这个命名空间namespace的值必须是Mapper接口的全类路径 -->
 <mapper namespace="com.qinjiangbo.dao.UserMapper">
     <!-- 根据编号查找用户 -->
     <select id="findUserById" parameterType="int"

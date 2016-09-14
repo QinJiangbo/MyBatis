@@ -1,5 +1,6 @@
 package com.qinjiangbo.test;
 
+import com.qinjiangbo.dao.UserMapper;
 import com.qinjiangbo.dao.UserMapperC;
 import com.qinjiangbo.pojo.User;
 import org.apache.ibatis.session.SqlSession;
@@ -92,6 +93,38 @@ public class MyBatisTest2 {
     public void testRetrieveUser2() {
         UserMapperC userMapperC = sqlSession.getMapper(UserMapperC.class);
         User user = userMapperC.retrieveUser(580314);
+        System.out.println(user);
+    }
+
+    /**
+     * BASED ON ANNOTATION AND XML
+     */
+
+    // C
+    @Test
+    public void testCreateUser3() {
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        User user = new User(580327, "Xinxin", "123456", 23, "123abc@126.com", "13888899211", "Wuhan University");
+        userMapper.createUser(user);
+    }
+
+    @Test
+    public void testDeleteUser3() {
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        userMapper.deleteUser(580327);
+    }
+
+    @Test
+    public void testUpdateUser3() {
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        User user = new User(580314, "Handsome", "123456", 23, "123abc@126.com", "13888899211", "Wuhan University");
+        userMapper.updateUser(user);
+    }
+
+    @Test
+    public void testRetrieveUser3() {
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        User user = userMapper.findUserById(580314);
         System.out.println(user);
     }
 
