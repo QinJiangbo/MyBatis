@@ -4,6 +4,7 @@ import com.qinjiangbo.pojo.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,21 +32,23 @@ public class MyBatisTest2 {
         String statement = "com.qinjiangbo.dao.UserMapper.createUser";
         User user = new User(580327, "Xinxin", "123456", 23, "123abc@126.com", "13888899211", "Wuhan University");
         sqlSession.insert(statement, user);
-        sqlSession.commit();
     }
 
     @Test
     public void testDeleteUser() {
         String statement = "com.qinjiangbo.dao.UserMapper.deleteUser";
         sqlSession.delete(statement, 580327);
-        sqlSession.commit();
     }
 
     @Test
     public void testUpdateUser() {
-        User user = new User(580314, "Handsome", "123456", 23, "123abc@126.com", "13888899211", "Wuhan University");
+        User user = new User(580314, "QinJiangbo", "123456", 23, "123abc@126.com", "13888899211", "Wuhan University");
         String statement = "com.qinjiangbo.dao.UserMapper.updateUser";
         sqlSession.update(statement, user);
+    }
+
+    @After
+    public void commit() {
         sqlSession.commit();
     }
 
