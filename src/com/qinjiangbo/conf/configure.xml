@@ -27,5 +27,6 @@
         <mapper resource="com/qinjiangbo/dao/UserMapper.xml"/>
         <mapper class="com.qinjiangbo.dao.UserMapperC"/>
         <mapper class="com.qinjiangbo.dao.StudentMapper"/>
+        <mapper class="com.qinjiangbo.dao.ClassesMapper"/>
     </mappers>
 </configuration>
