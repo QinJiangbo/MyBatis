@@ -31,7 +31,7 @@ public class MyBatisTest3 {
     public void testFindStudentInfo() {
         StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
         Student student = studentMapper.findStudentInfo(580315);
-        System.out.println();
+        System.out.println(student);
     }
 
     @After

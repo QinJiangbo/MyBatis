@@ -10,7 +10,16 @@
         <result column="s_age" property="age"/>
     </resultMap>
 
+    <resultMap id="StudentBasicInfoMap" type="java.util.Map">
+        <result column="s_name" property="name"/>
+        <result column="s_password" property="password"/>
+    </resultMap>
+
     <select id="findStudentInfo" resultMap="StudentInfoMap" parameterType="int">
         SELECT * FROM student WHERE s_id = #{id};
+    </select>
+
+    <select id="findStudentBasicInfo" resultMap="StudentBasicInfoMap" parameterType="int">
+        SELECT s_name, s_password FROM studetn WHERE s_id = #{id};
     </select>
 </mapper>
