@@ -20,6 +20,6 @@
     </select>
 
     <select id="findStudentBasicInfo" resultMap="StudentBasicInfoMap" parameterType="int">
-        SELECT s_name, s_password FROM studetn WHERE s_id = #{id};
+        SELECT s_name, s_password FROM student WHERE s_id = #{id};
     </select>
 </mapper>

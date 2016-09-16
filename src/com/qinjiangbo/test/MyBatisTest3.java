@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.InputStream;
+import java.util.Map;
 
 /**
  * Date: 9/16/16
@@ -32,6 +33,13 @@ public class MyBatisTest3 {
         StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
         Student student = studentMapper.findStudentInfo(580315);
         System.out.println(student);
+    }
+
+    @Test
+    public void testFindStudentBasicInfo() {
+        StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+        Map map = studentMapper.findStudentBasicInfo(580315);
+        System.out.println(map.get("name") + ":" + map.get("password"));
     }
 
     @After
