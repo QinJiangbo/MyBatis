@@ -3,4 +3,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qinjiangbo.dao.ClassesMapper">
 
+    <resultMap id="classInfoMap" type="com.qinjiangbo.pojo.Classes">
+        <id column="c_id" property="id"/>
+        <result column="c_name" property="name"/>
+        <association property="teacher" javaType="com.qinjiangbo.pojo.Teacher">
+            <id column="t_id" property="id"/>
+            <result column="t_name" property="name"/>
+            <result column="t_office" property="office"/>
+            <result column="t_gender" property="gender"/>
+        </association>
+    </resultMap>
 </mapper>
