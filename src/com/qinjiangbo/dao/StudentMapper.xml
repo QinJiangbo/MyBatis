@@ -3,6 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qinjiangbo.dao.StudentMapper">
 
+    <!-- 映射表字段名和实体属性名称 -->
     <resultMap id="StudentInfoMap" type="com.qinjiangbo.pojo.Student">
         <id column="s_id" property="id"/>
         <result column="s_name" property="name"/>
@@ -10,6 +11,7 @@
         <result column="s_age" property="age"/>
     </resultMap>
 
+    <!-- 自定义返回结果类型 -->
     <resultMap id="StudentBasicInfoMap" type="java.util.Map">
         <result column="s_name" property="name"/>
         <result column="s_password" property="password"/>

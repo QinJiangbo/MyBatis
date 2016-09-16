@@ -31,14 +31,14 @@ public class MyBatisTest3 {
     @Test
     public void testFindStudentInfo() {
         StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
-        Student student = studentMapper.findStudentInfo(580315);
+        Student student = studentMapper.findStudentInfo(580314);
         System.out.println(student);
     }
 
     @Test
     public void testFindStudentBasicInfo() {
         StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
-        Map map = studentMapper.findStudentBasicInfo(580315);
+        Map map = studentMapper.findStudentBasicInfo(580314);
         System.out.println(map.get("name") + ":" + map.get("password"));
     }
 
