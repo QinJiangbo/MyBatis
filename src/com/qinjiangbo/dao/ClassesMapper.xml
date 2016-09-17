@@ -13,4 +13,8 @@
             <result column="t_gender" property="gender"/>
         </association>
     </resultMap>
+
+    <select id="findClassById" parameterType="int" resultMap="classInfoMap">
+        SELECT * FROM class c, teacher t WHERE c.c_id = #{id} AND c.t_id = t.t_id;
+    </select>
 </mapper>
