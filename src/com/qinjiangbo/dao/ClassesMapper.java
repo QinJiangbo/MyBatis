@@ -15,4 +15,6 @@ public interface ClassesMapper {
      * @return
      */
     public Classes findClassById(int id);
+
+    public Classes findClassById2(int id);
 }
