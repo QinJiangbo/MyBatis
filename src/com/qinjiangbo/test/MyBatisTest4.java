@@ -40,6 +40,13 @@ public class MyBatisTest4 {
         System.out.println(classes);
     }
 
+    @Test
+    public void testFindClassById3() {
+        ClassesMapper classesMapper = sqlSession.getMapper(ClassesMapper.class);
+        Classes classes = classesMapper.findClassById3(1);
+        System.out.println(classes);
+    }
+
     @After
     public void commit() {
         sqlSession.commit();

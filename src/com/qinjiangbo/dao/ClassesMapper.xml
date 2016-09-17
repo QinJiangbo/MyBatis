@@ -69,6 +69,6 @@
     </resultMap>
 
     <select id="findClassById3" parameterType="int" resultMap="classInfoMap3">
-
+        SELECT * FROM class c, teacher t, student s WHERE c.t_id = t.t_id AND s.c_id = c.c_id AND c.c_id = #{id};
     </select>
 </mapper>
