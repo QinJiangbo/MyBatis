@@ -3,6 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qinjiangbo.dao.ClassesMapper">
 
+    <!-- 根据班级编号查找班级、教师信息 -->
     <!--
         以下为第一种方式,执行一次查询
         SELECT * FROM class c, teacher t WHERE c.c_id = #{id} AND c.t_id = t.t_id;
@@ -49,5 +50,25 @@
         SELECT * FROM teacher WHERE t_id = #{id};
     </select>
 
-    <!--  -->
+    <!-- 根据班级编号查找班级、教师、学生信息 -->
+    <resultMap id="classInfoMap3" type="com.qinjiangbo.pojo.Classes">
+        <id column="c_id" property="id"/>
+        <result column="c_name" property="name"/>
+        <association property="teacher" javaType="com.qinjiangbo.pojo.Teacher">
+            <id column="t_id" property="id"/>
+            <result column="t_name" property="name"/>
+            <result column="t_office" property="office"/>
+            <result column="t_gender" property="gender"/>
+        </association>
+        <collection property="students" ofType="com.qinjiangbo.pojo.Student">
+            <id column="s_id" property="id"/>
+            <result column="s_name" property="name"/>
+            <result column="s_password" property="password"/>
+            <result column="s_age" property="age"/>
+        </collection>
+    </resultMap>
+
+    <select id="findClassById3" parameterType="int" resultMap="classInfoMap3">
+
+    </select>
 </mapper>

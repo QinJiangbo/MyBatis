@@ -17,4 +17,6 @@ public interface ClassesMapper {
     public Classes findClassById(int id);
 
     public Classes findClassById2(int id);
+
+    public Classes findClassById3(int id);
 }
