@@ -1,5 +1,7 @@
 package com.qinjiangbo.pojo;
 
+import java.util.List;
+
 /**
  * Date: 9/16/16
  * Author: qinjiangbo@github.io
@@ -8,6 +10,7 @@ public class Classes {
     private int id;
     private String name;
     private Teacher teacher;
+    private List<Student> students;
 
     public int getId() {
         return id;
@@ -33,12 +36,21 @@ public class Classes {
         this.teacher = teacher;
     }
 
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
     @Override
     public String toString() {
         return "Classes{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", teacher=" + teacher +
+                ", students=" + students +
                 '}';
     }
 

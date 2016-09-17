@@ -48,4 +48,6 @@
     <select id="findTeacherById" parameterType="int" resultMap="teacherInfoMap">
         SELECT * FROM teacher WHERE t_id = #{id};
     </select>
+
+    <!--  -->
 </mapper>
