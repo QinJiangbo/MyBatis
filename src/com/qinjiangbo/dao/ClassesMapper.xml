@@ -51,6 +51,9 @@
     </select>
 
     <!-- 根据班级编号查找班级、教师、学生信息 -->
+    <!--
+        方式一: 嵌套结果: 使用嵌套结果映射来处理重复的联合结果的子集
+    -->
     <resultMap id="classInfoMap3" type="com.qinjiangbo.pojo.Classes">
         <id column="c_id" property="id"/>
         <result column="c_name" property="name"/>
@@ -70,5 +73,34 @@
 
     <select id="findClassById3" parameterType="int" resultMap="classInfoMap3">
         SELECT * FROM class c, teacher t, student s WHERE c.t_id = t.t_id AND s.c_id = c.c_id AND c.c_id = #{id};
+    </select>
+
+    <!--
+        方式二：嵌套查询：通过执行另外一个SQL映射语句来返回预期的复杂类型
+    -->
+    <resultMap id="classInfoMap4" type="com.qinjiangbo.pojo.Classes">
+        <id column="c_id" property="id"/>
+        <result column="c_name" property="name"/>
+        <association column="t_id" property="teacher" javaType="com.qinjiangbo.pojo.Teacher" select="findTeacherById2"/>
+        <collection property="students" ofType="com.qinjiangbo.pojo.Student" column="c_id" select="findStudentsByCid"/>
+    </resultMap>
+
+    <select id="findClassById4" parameterType="int" resultMap="classInfoMap4">
+        SELECT * FROM class WHERE c_id = #{id};
+    </select>
+
+    <select id="findTeacherById2" parameterType="int" resultMap="teacherInfoMap">
+        SELECT * FROM teacher WHERE t_id = #{id};
+    </select>
+
+    <resultMap id="studentInfoMap" type="com.qinjiangbo.pojo.Student">
+        <id column="s_id" property="id"/>
+        <result column="s_name" property="name"/>
+        <result column="s_password" property="password"/>
+        <result column="s_age" property="age"/>
+    </resultMap>
+
+    <select id="findStudentsByCid" parameterType="int" resultMap="studentInfoMap">
+        SELECT * FROM student WHERE c_id = #{id};
     </select>
 </mapper>
