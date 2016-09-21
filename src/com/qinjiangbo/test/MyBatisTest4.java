@@ -31,7 +31,6 @@ public class MyBatisTest4 {
         ClassesMapper classesMapper = sqlSession.getMapper(ClassesMapper.class);
         Classes classes = classesMapper.findClassById(1);
         System.out.println(classes);
-
     }
 
     @Test
