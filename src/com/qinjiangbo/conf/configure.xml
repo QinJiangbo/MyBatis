@@ -28,5 +28,6 @@
         <mapper class="com.qinjiangbo.dao.UserMapperC"/>
         <mapper class="com.qinjiangbo.dao.StudentMapper"/>
         <mapper class="com.qinjiangbo.dao.ClassesMapper"/>
+        <mapper class="com.qinjiangbo.dao.TeacherMapper"/>
     </mappers>
 </configuration>

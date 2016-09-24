@@ -2,5 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qinjiangbo.dao.TeacherMapper">
+    <select id="countTeacherNumber" parameterMap="countTeacherNumberMap" statementType="CALLABLE">
+        CALL mybatis.count_teacher_procedure(?, ?)
+    </select>
 
+    <parameterMap type="java.util.Map" id="countTeacherNumberMap">
+        <parameter property="t_sex" jdbcType="INTEGER" mode="IN"/>
+        <parameter property="user_count" jdbcType="INTEGER" mode="OUT"/>
+    </parameterMap>
 </mapper>
