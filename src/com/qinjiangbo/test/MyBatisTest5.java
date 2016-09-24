@@ -1,7 +1,6 @@
 package com.qinjiangbo.test;
 
 import com.qinjiangbo.dao.TeacherMapper;
-import com.qinjiangbo.pojo.Teacher;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
