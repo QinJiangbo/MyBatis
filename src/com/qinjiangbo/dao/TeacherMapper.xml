@@ -10,4 +10,41 @@
         <parameter property="t_sex" jdbcType="INTEGER" mode="IN"/>
         <parameter property="user_count" jdbcType="INTEGER" mode="OUT"/>
     </parameterMap>
+
+    <select id="findTeachersByIds" resultMap="teacherInfoMap">
+        SELECT * FROM teacher WHERE t_id in
+        <!-- collection这里指定参数的集合类型 list, array等-->
+        <foreach collection="list" item="ids" index="index" open="(" close=")" separator=",">
+            #{ids}
+        </foreach>
+    </select>
+
+    <select id="findTeachersByIds2" resultMap="teacherInfoMap">
+        SELECT * FROM teacher WHERE t_id in
+        <!-- collection这里指定参数的集合类型 list, array等-->
+        <foreach collection="array" item="ids" index="index" open="(" close=")" separator=",">
+            #{ids}
+        </foreach>
+    </select>
+
+    <!--
+        !!注意!!
+        这个地方特别容易出错!当使用if标签的时候,需要注意这个问题,
+        就是单个参数进来判断为空,必须使用_parameter来进行判断,否则
+        会报错。如果是多个参数的话建议使用一个参数对象封装起来,然后直接使用
+        #{参数名}来判断!切记!
+    -->
+    <select id="findTeacherByNamePrefix" parameterType="java.lang.String" resultMap="teacherInfoMap">
+        SELECT * FROM teacher
+        <if test="_parameter != null and _parameter != ''">
+            WHERE t_name LIKE CONCAT(#{prefix}, '%')
+        </if>
+    </select>
+
+    <resultMap id="teacherInfoMap" type="com.qinjiangbo.pojo.Teacher">
+        <id column="t_id" property="id"/>
+        <result column="t_name" property="name"/>
+        <result column="t_office" property="office"/>
+        <result column="t_gender" property="gender"/>
+    </resultMap>
 </mapper>
