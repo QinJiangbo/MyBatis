@@ -65,6 +65,16 @@ public class MyBatisTest6 {
         }
     }
 
+    @Test
+    public void testUpdateTeacherInfo() {
+        TeacherMapper teacherMapper = sqlSession.getMapper(TeacherMapper.class);
+        Teacher teacher = new Teacher();
+        teacher.setId(1003);
+        teacher.setName("QinJiangbo");
+        int result = teacherMapper.updateTeacherInfo(teacher);
+        System.out.println(result);
+    }
+
     @After
     public void commit() {
         sqlSession.commit();

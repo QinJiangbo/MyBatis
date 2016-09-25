@@ -42,4 +42,12 @@ public interface TeacherMapper {
      * @return
      */
     public List<Teacher> findTeacherByNamePrefix(String prefix);
+
+    /**
+     * 更新教师信息
+     *
+     * @param teacher
+     * @return
+     */
+    public int updateTeacherInfo(Teacher teacher);
 }

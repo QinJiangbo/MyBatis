@@ -41,6 +41,22 @@
         </if>
     </select>
 
+    <update id="updateTeacherInfo" parameterType="com.qinjiangbo.pojo.Teacher">
+        UPDATE teacher
+        <set>
+            <if test="name != null and name != ''">
+                t_name = #{name}
+            </if>
+            <if test="office != null and office != ''">
+                t_office = #{office}
+            </if>
+            <if test="gender != null and gender != ''">
+                t_gender = #{gender}
+            </if>
+        </set>
+        WHERE t_id = #{id}
+    </update>
+
     <resultMap id="teacherInfoMap" type="com.qinjiangbo.pojo.Teacher">
         <id column="t_id" property="id"/>
         <result column="t_name" property="name"/>
