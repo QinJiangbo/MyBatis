@@ -1,5 +1,8 @@
 package com.qinjiangbo.test;
 
+import com.qinjiangbo.gen.mapper.TeacherMapper;
+import com.qinjiangbo.gen.model.Teacher;
+import com.qinjiangbo.gen.model.TeacherExample;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -8,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Date: 27/09/2016
@@ -27,7 +31,13 @@ public class MyBatisTest7 {
 
     @Test
     public void testFindTeachers() {
-        //TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);
+        TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);
+        TeacherExample example = new TeacherExample();
+        example.createCriteria().andTGenderIsNotNull();
+        List<Teacher> teacherList = mapper.selectByExample(example);
+        for (Teacher teacher : teacherList) {
+            System.out.println(teacher);
+        }
     }
 
     @After
