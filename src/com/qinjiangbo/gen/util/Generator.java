@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Richard on 6/20/16.
+ * Date: 9/26/16
+ * Author: qinjiangbo@github.io
  */
 public class Generator {
 

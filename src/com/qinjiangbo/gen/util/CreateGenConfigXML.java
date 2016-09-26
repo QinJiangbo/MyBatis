@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Richard on 6/20/16.
+ * Date: 9/26/16
+ * Author: qinjiangbo@github.io
  */
 public class CreateGenConfigXML {
 
@@ -40,7 +41,7 @@ public class CreateGenConfigXML {
         Connection connection = getConnection();
         DatabaseMetaData databaseMetaData = connection.getMetaData();
         String[] types = {"TABLE"};
-        ResultSet resultSet = databaseMetaData.getTables(null, null, null, types);
+        ResultSet resultSet = databaseMetaData.getTables(null, null, "%", types);
         while (resultSet.next()) {
             String name = (String) resultSet.getObject("TABLE_NAME");
             if (name.contains("（") || name.contains("）")) {
@@ -75,10 +76,10 @@ public class CreateGenConfigXML {
 
         //create jdbcConnection node
         Element jdbcConnection = context.addElement("jdbcConnection");
-        jdbcConnection.addAttribute("driverClass", "org.postgresql.Driver");
-        jdbcConnection.addAttribute("connectionURL", "jdbc:postgresql://101.200.91.162:5432/satecdb_new");
-        jdbcConnection.addAttribute("userId", "pguser");
-        jdbcConnection.addAttribute("password", "cecesatisatkpg");
+        jdbcConnection.addAttribute("driverClass", "com.mysql.cj.jdbc.Driver");
+        jdbcConnection.addAttribute("connectionURL", "jdbc:mysql://localhost:3306/mybatis");
+        jdbcConnection.addAttribute("userId", "Richard");
+        jdbcConnection.addAttribute("password", "123456");
 
         //create javaTypeResolver node
         Element javaTypeResolver = context.addElement("javaTypeResolver");
@@ -89,15 +90,15 @@ public class CreateGenConfigXML {
         //create javaModelGenerator node
         Element javaModelGenerator = context.addElement("javaModelGenerator");
         javaModelGenerator.addAttribute("targetPackage", "com.qinjiangbo.gen.model");
-        javaModelGenerator.addAttribute("targetProject", "src/tools/java");
+        javaModelGenerator.addAttribute("targetProject", "src/com/qinjiangbo");
         Element property3 = javaModelGenerator.addElement("property");
         property3.addAttribute("name", "enableSubPackages");
         property3.addAttribute("value", "true");
 
         //create sqlMapGenerator node
         Element sqlMapGenerator = context.addElement("sqlMapGenerator");
-        sqlMapGenerator.addAttribute("targetPackage", "com.qinjiangbo.gen.dao");
-        sqlMapGenerator.addAttribute("targetProject", "src/tools/java");
+        sqlMapGenerator.addAttribute("targetPackage", "com.qinjiangbo.gen.mapper");
+        sqlMapGenerator.addAttribute("targetProject", "src/com/qinjiangbo");
         Element property4 = sqlMapGenerator.addElement("property");
         property4.addAttribute("name", "enableSubPackages");
         property4.addAttribute("value", "true");
@@ -105,8 +106,8 @@ public class CreateGenConfigXML {
         //create javaClientGenerator node
         Element javaClientGenerator = context.addElement("javaClientGenerator");
         javaClientGenerator.addAttribute("type", "XMLMAPPER");
-        javaClientGenerator.addAttribute("targetPackage", "com.qinjiangbo.gen.dao");
-        javaClientGenerator.addAttribute("targetProject", "src/tools/java");
+        javaClientGenerator.addAttribute("targetPackage", "com.qinjiangbo.gen.mapper");
+        javaClientGenerator.addAttribute("targetProject", "src/com/qinjiangbo");
         Element property5 = javaClientGenerator.addElement("property");
         property5.addAttribute("name", "enableSubPackages");
         property5.addAttribute("value", "true");
@@ -141,7 +142,7 @@ public class CreateGenConfigXML {
     public static void writeXML() throws Exception {
         XMLWriter xmlWriter = null;
         String userDir = System.getProperty("user.dir");
-        String fileName = userDir + "/src/tools/resources/generatorConfiguration.xml";
+        String fileName = userDir + "/src/com/qinjiangbo/gen/util/generatorConfiguration.xml";
         OutputFormat format = OutputFormat.createPrettyPrint();
         FileOutputStream fos = new FileOutputStream(new File(fileName));
         format.setEncoding("utf-8");
