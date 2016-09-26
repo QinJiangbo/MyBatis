@@ -5,7 +5,6 @@ import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
-import org.springframework.util.StringUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -119,7 +118,7 @@ public class CreateGenConfigXML {
             String entityName = "";
             for (String word : words) {
                 word = word.substring(0, 1).toUpperCase() + word.substring(1);
-                if (StringUtils.isEmpty(entityName)) {
+                if (entityName == null || entityName.equals("")) {
                     entityName = word;
                 } else {
                     entityName = entityName + word;

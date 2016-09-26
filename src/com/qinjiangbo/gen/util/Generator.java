@@ -18,7 +18,7 @@ public class Generator {
         List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
         String userDir = System.getProperty("user.dir");
-        File configFile = new File(userDir + "/src/tools/resources/generatorConfiguration.xml");
+        File configFile = new File(userDir + "/src/com/qinjiangbo/gen/util/generatorConfiguration.xml");
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);
         DefaultShellCallback callback = new DefaultShellCallback(overwrite);
