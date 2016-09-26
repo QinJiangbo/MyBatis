@@ -139,7 +139,10 @@ public class CreateGenConfigXML {
             tableNode.addAttribute("enableDeleteByExample", "true");
             tableNode.addAttribute("enableSelectByExample", "true");
             tableNode.addAttribute("selectByExampleQueryId", "true");
-            tableNode.addAttribute("selectByExampleQueryId", "true");
+            tableNode.addAttribute("enableDeleteByPrimaryKey", "true");
+            tableNode.addAttribute("enableSelectByPrimaryKey", "true");
+            tableNode.addAttribute("enableUpdateByPrimaryKey", "true");
+            tableNode.addAttribute("enableInsert", "true");
         }
 
         return doc;
