@@ -24,10 +24,10 @@ public class CreateGenConfigXML {
      */
     public static Connection getConnection() {
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection =
-                    DriverManager.getConnection("jdbc:postgresql://101.200.91.162:5432/satecdb_new",
-                            "pguser", "cecesatisatkpg");
+                    DriverManager.getConnection("jdbc:mysql://localhost:3306/mybatis",
+                            "Richard", "123456");
             return connection;
         } catch (Exception e) {
             e.printStackTrace();
