@@ -3,8 +3,10 @@ package com.qinjiangbo.gen.util;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.dom.DOMDocumentType;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
+import org.dom4j.tree.DefaultDocumentType;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -55,6 +57,10 @@ public class CreateGenConfigXML {
 
     private static Document createDom() throws SQLException {
         Document doc = DocumentHelper.createDocument();
+        doc.setDocType(new DOMDocumentType("generatorConfiguration",
+                "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN",
+                "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd"));
+
         //create root node
         Element root = doc.addElement("generatorConfiguration");
 
@@ -90,7 +96,7 @@ public class CreateGenConfigXML {
         //create javaModelGenerator node
         Element javaModelGenerator = context.addElement("javaModelGenerator");
         javaModelGenerator.addAttribute("targetPackage", "com.qinjiangbo.gen.model");
-        javaModelGenerator.addAttribute("targetProject", "src/com/qinjiangbo");
+        javaModelGenerator.addAttribute("targetProject", "src");
         Element property3 = javaModelGenerator.addElement("property");
         property3.addAttribute("name", "enableSubPackages");
         property3.addAttribute("value", "true");
@@ -98,7 +104,7 @@ public class CreateGenConfigXML {
         //create sqlMapGenerator node
         Element sqlMapGenerator = context.addElement("sqlMapGenerator");
         sqlMapGenerator.addAttribute("targetPackage", "com.qinjiangbo.gen.mapper");
-        sqlMapGenerator.addAttribute("targetProject", "src/com/qinjiangbo");
+        sqlMapGenerator.addAttribute("targetProject", "src");
         Element property4 = sqlMapGenerator.addElement("property");
         property4.addAttribute("name", "enableSubPackages");
         property4.addAttribute("value", "true");
@@ -107,7 +113,7 @@ public class CreateGenConfigXML {
         Element javaClientGenerator = context.addElement("javaClientGenerator");
         javaClientGenerator.addAttribute("type", "XMLMAPPER");
         javaClientGenerator.addAttribute("targetPackage", "com.qinjiangbo.gen.mapper");
-        javaClientGenerator.addAttribute("targetProject", "src/com/qinjiangbo");
+        javaClientGenerator.addAttribute("targetProject", "src");
         Element property5 = javaClientGenerator.addElement("property");
         property5.addAttribute("name", "enableSubPackages");
         property5.addAttribute("value", "true");
