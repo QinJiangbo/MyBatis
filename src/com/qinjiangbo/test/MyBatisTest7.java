@@ -36,7 +36,7 @@ public class MyBatisTest7 {
         example.createCriteria().andTGenderIsNotNull();
         List<Teacher> teacherList = mapper.selectByExample(example);
         for (Teacher teacher : teacherList) {
-            System.out.println(teacher);
+            System.out.println(teacher.gettName() + " " + teacher.gettGender());
         }
     }
 
