@@ -1,6 +1,9 @@
 package com.qinjiangbo.test;
 
+import com.qinjiangbo.gen.mapper.StudentMapper;
 import com.qinjiangbo.gen.mapper.TeacherMapper;
+import com.qinjiangbo.gen.model.Student;
+import com.qinjiangbo.gen.model.StudentExample;
 import com.qinjiangbo.gen.model.Teacher;
 import com.qinjiangbo.gen.model.TeacherExample;
 import org.apache.ibatis.session.SqlSession;
@@ -37,6 +40,17 @@ public class MyBatisTest7 {
         List<Teacher> teacherList = mapper.selectByExample(example);
         for (Teacher teacher : teacherList) {
             System.out.println(teacher.gettName() + " " + teacher.gettGender());
+        }
+    }
+
+    @Test
+    public void testFindStudents() {
+        StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+        StudentExample example = new StudentExample();
+        example.createCriteria().andCIdEqualTo(3);
+        List<Student> studentList = mapper.selectByExample(example);
+        for (Student student : studentList) {
+            System.out.println(student.getsName() + " " + student.getsAge());
         }
     }
 
