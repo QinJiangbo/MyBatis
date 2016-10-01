@@ -27,7 +27,7 @@ public class CreateGenConfigXML {
      */
     public static Connection getConnection() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             Connection connection =
                     DriverManager.getConnection("jdbc:mysql://localhost:3306/mybatis",
                             "Richard", "123456");
@@ -82,7 +82,7 @@ public class CreateGenConfigXML {
 
         //create jdbcConnection node
         Element jdbcConnection = context.addElement("jdbcConnection");
-        jdbcConnection.addAttribute("driverClass", "com.mysql.cj.jdbc.Driver");
+        jdbcConnection.addAttribute("driverClass", "com.mysql.jdbc.Driver");
         jdbcConnection.addAttribute("connectionURL", "jdbc:mysql://localhost:3306/mybatis");
         jdbcConnection.addAttribute("userId", "Richard");
         jdbcConnection.addAttribute("password", "123456");
