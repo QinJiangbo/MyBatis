@@ -38,6 +38,12 @@ public class CreateGenConfigXML {
         return null;
     }
 
+    /**
+     * 获取全部的表名
+     *
+     * @return
+     * @throws SQLException
+     */
     public static List<String> getTableNames() throws SQLException {
         List<String> names = new ArrayList<String>();
         Connection connection = getConnection();
@@ -55,45 +61,51 @@ public class CreateGenConfigXML {
         return names;
     }
 
+    /**
+     * 生成DOM文件
+     * @return
+     * @throws SQLException
+     */
     private static Document createDom() throws SQLException {
         Document doc = DocumentHelper.createDocument();
+        //创建DOCTYPE申明
         doc.setDocType(new DOMDocumentType("generatorConfiguration",
                 "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN",
                 "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd"));
 
-        //create root node
+        //创建根结点
         Element root = doc.addElement("generatorConfiguration");
 
-        //create context node
+        //创建上下文结点
         Element context = root.addElement("context");
         context.addAttribute("id", "MBG");
         context.addAttribute("targetRuntime", "Mybatis3");
         context.addAttribute("defaultModelType", "conditional");
 
-        //create plugin node
+        //创建插件结点(这里默认每个类序列化)
         Element plugin = context.addElement("plugin");
         plugin.addAttribute("type", "org.mybatis.generator.plugins.SerializablePlugin");
 
-        //create commentGenerator node
+        //创建注释结点,判断是否生成注释
         Element commentGenerator = context.addElement("commentGenerator");
         Element property = commentGenerator.addElement("property");
         property.addAttribute("name", "suppressAllComments");
         property.addAttribute("value", "false");
 
-        //create jdbcConnection node
+        //创建jdbc连接结点
         Element jdbcConnection = context.addElement("jdbcConnection");
         jdbcConnection.addAttribute("driverClass", "com.mysql.jdbc.Driver");
         jdbcConnection.addAttribute("connectionURL", "jdbc:mysql://localhost:3306/mybatis");
         jdbcConnection.addAttribute("userId", "Richard");
         jdbcConnection.addAttribute("password", "123456");
 
-        //create javaTypeResolver node
+        //创建java类型处理类结点
         Element javaTypeResolver = context.addElement("javaTypeResolver");
         Element property2 = javaTypeResolver.addElement("property");
         property2.addAttribute("name", "forceBigDecimals");
         property2.addAttribute("value", "false");
 
-        //create javaModelGenerator node
+        //创建java模型结点
         Element javaModelGenerator = context.addElement("javaModelGenerator");
         javaModelGenerator.addAttribute("targetPackage", "com.qinjiangbo.gen.model");
         javaModelGenerator.addAttribute("targetProject", "src");
@@ -101,7 +113,7 @@ public class CreateGenConfigXML {
         property3.addAttribute("name", "enableSubPackages");
         property3.addAttribute("value", "true");
 
-        //create sqlMapGenerator node
+        //创建sql映射文件结点
         Element sqlMapGenerator = context.addElement("sqlMapGenerator");
         sqlMapGenerator.addAttribute("targetPackage", "com.qinjiangbo.gen.mapper");
         sqlMapGenerator.addAttribute("targetProject", "src");
@@ -109,7 +121,7 @@ public class CreateGenConfigXML {
         property4.addAttribute("name", "enableSubPackages");
         property4.addAttribute("value", "true");
 
-        //create javaClientGenerator node
+        //创建java客户端结点,这里声明了dao层的位置
         Element javaClientGenerator = context.addElement("javaClientGenerator");
         javaClientGenerator.addAttribute("type", "XMLMAPPER");
         javaClientGenerator.addAttribute("targetPackage", "com.qinjiangbo.gen.mapper");
@@ -118,7 +130,7 @@ public class CreateGenConfigXML {
         property5.addAttribute("name", "enableSubPackages");
         property5.addAttribute("value", "true");
 
-        //create table nodes
+        //创建表(table)结点
         List<String> names = getTableNames();
         for (String name : names) {
             String[] words = name.split("_");
@@ -148,6 +160,10 @@ public class CreateGenConfigXML {
         return doc;
     }
 
+    /**
+     * 写入到XML文件中
+     * @throws Exception
+     */
     public static void writeXML() throws Exception {
         XMLWriter xmlWriter = null;
         String userDir = System.getProperty("user.dir");
